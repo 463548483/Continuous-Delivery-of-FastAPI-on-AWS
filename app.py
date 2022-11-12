@@ -1,34 +1,18 @@
-import streamlit as st
-import pandas as pd
-from dblib.querydb import find_job_avg_salary
-from wordcloud import WordCloud, STOPWORDS
-import matplotlib.pyplot as plt
+from fastapi import FastAPI
+import uvicorn
 
+app = FastAPI()
 
-@st.cache(persist=True)
-def load_data():
-    result = find_job_avg_salary()
-    return pd.DataFrame(result, columns=["avg_salary", "job_title"])
+@app.get("/")
+async def root():
+    return {"message": "Hello Functions Framework"}
 
+@app.get("/add/{num1}/{num2}")
+async def add(num1: int, num2: int):
+    """Add two numbers together"""
 
-st.title("Job Salary")
-st.write("This app shows the average salary of a job title")
-df = load_data()
-# df.astype({"avg_salary": int})
-st.write(df)
+    total = num1 + num2
+    return {"total": total}
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-st.write("word cloud for job title per salary")
-
-index = df.index
-number_of_rows = len(index)
-words = ""
-for i in index:
-    words += ((df["job_title"][i]+";")*(number_of_rows-i))
-wc = WordCloud(
-    stopwords=STOPWORDS, background_color="white", height=640, width=800
-).generate(words)
-plt.imshow(wc)
-plt.xticks([])
-plt.yticks([])
-st.pyplot()
+if __name__ == '__main__':
+    uvicorn.run(app, port=8080, host='0.0.0.0')
