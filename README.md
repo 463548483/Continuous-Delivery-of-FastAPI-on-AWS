@@ -9,25 +9,29 @@ Dataset: https://www.kaggle.com/code/raghurayirath/plotly-data-science-job-salar
 ## Project Structure
 ![image](https://github.com/nogibjj/Zijing-codespcase/blob/main/structure.jpg)
 
-## Test CLI
+## Build FastAPI
 ```linux
 databricks clusters list --output JSON | jq
 databricks fs ls dbfs:/
 databricks jobs list --output JSON | jq
 ```
 
-## CLI Query 
-  `query-job-avg-salary`  Find job average salary
+## Containerzed FastAPI
 
-  `query-most-n`    --n      Find N most pay job, default=5
+`docker build .`
+`docker image ls`
+`docker run -p 127.0.0.1:8080:8080  9436eaf1859b`
 
-```linux
-chmod +x query.py
-./query.py query-most-n --n 5 
-./query.py query-job-avg-salary
-```
+## Push to ECR
+Retrieve an authentication token and authenticate Docker client to registry
+`aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 216514549505.dkr.ecr.us-east-1.amazonaws.com`
 
-## Microservice
-```linux
-streamlit run app.py --server.enableCORS=false
-```
+Build Docker image
+`docker build -t proj2 .`
+
+Tag image:
+`docker tag proj2:proj4 216514549505.dkr.ecr.us-east-1.amazonaws.com/proj2:proj4`
+
+Run the following command to push this image to your newly created AWS repository:
+
+`docker push 216514549505.dkr.ecr.us-east-1.amazonaws.com/proj2:proj4`
