@@ -2,9 +2,10 @@
 
 ![example workflow](https://github.com/nogibjj/Zijing-codespcase/actions/workflows/main.yml/badge.svg)
 
-This is Zijing's project 4 repo, which contains a big data script that use Databricks API and Streamlit app to show word cloud for job salary analysis. 
-
-Dataset: https://www.kaggle.com/code/raghurayirath/plotly-data-science-job-salary-dataset-eda/data
+This is Zijing's project 4 repo:
+1. Create FastAPI for data prediction with GaussianNB model 
+2. Push tested source code to Github and perform Continuous Integration with Github Actions
+3. Configure AWS CodeBuild, ECR, AppRunner to Deploy Changes on build (Continuous Delivery)
 
 ## Project Structure
 ![image](https://github.com/463548483/Zijing-proj4/blob/main/proj4.png)
