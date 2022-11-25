@@ -9,4 +9,4 @@ fastapi==0.75.1
 uvicorn==0.17.6
 awscli
 pydantic==1.8.2
-sklearn
+scikit-learn==1.0

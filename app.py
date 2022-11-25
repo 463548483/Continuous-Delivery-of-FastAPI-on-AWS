@@ -34,6 +34,5 @@ async def predict(body: request_body):
     y_pred = model.predict(X_new)[0]
     return {"class": iris.target_names[y_pred]}
 
-
 if __name__ == "__main__":
     uvicorn.run(app, port=8080, host="0.0.0.0")
