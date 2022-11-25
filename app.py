@@ -1,3 +1,4 @@
+# pylint: disable=E0611
 from fastapi import FastAPI
 import uvicorn
 from sklearn.datasets import load_iris
