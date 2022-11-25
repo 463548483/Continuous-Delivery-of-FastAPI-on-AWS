@@ -25,6 +25,3 @@ jobs:
     - name: Format code
       run: |
         make format
-    - name: Deploy
-      run: |
-        make deploy
