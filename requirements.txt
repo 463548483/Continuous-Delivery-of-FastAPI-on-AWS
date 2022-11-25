@@ -5,7 +5,7 @@ black==22.3.0
 nbval==0.9.6
 fire==0.4.0
 click==8.1.2
-fastapi==0.75.1
+fastapi[all]
 uvicorn==0.17.6
 awscli
 pydantic==1.8.2
