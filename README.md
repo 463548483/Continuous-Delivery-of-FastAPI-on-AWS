@@ -7,17 +7,13 @@ This is Zijing's project 4 repo, which contains a big data script that use Datab
 Dataset: https://www.kaggle.com/code/raghurayirath/plotly-data-science-job-salary-dataset-eda/data
 
 ## Project Structure
-![image](https://github.com/nogibjj/Zijing-codespcase/blob/main/structure.jpg)
+![image](https://github.com/463548483/Zijing-proj4/blob/main/proj4.png)
 
 ## Build FastAPI
-```linux
-databricks clusters list --output JSON | jq
-databricks fs ls dbfs:/
-databricks jobs list --output JSON | jq
-```
+root("/") page: show welcome information
+predict("/predict/") page: predict api for GaussianNB towards iris dataset
 
 ## Containerzed FastAPI
-
 `docker build .`
 `docker image ls`
 `docker run -p 127.0.0.1:8080:8080  9436eaf1859b`
@@ -33,5 +29,7 @@ Tag image:
 `docker tag proj2:proj4 216514549505.dkr.ecr.us-east-1.amazonaws.com/proj2:proj4`
 
 Run the following command to push this image to your newly created AWS repository:
-
 `docker push 216514549505.dkr.ecr.us-east-1.amazonaws.com/proj2:proj4`
+
+## Continuely Deployment
+`make all` or git push to github will trigger the re-deployment of api
