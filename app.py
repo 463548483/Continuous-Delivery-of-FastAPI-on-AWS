@@ -7,6 +7,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # load iris dataset
+# pylint: disable=E1101
 iris = load_iris()
 X = iris.data
 y = iris.target
@@ -33,6 +34,7 @@ async def predict(body: request_body):
     X_new = [[body.sepal_length, body.sepal_width, body.petal_length, body.petal_width]]
     y_pred = model.predict(X_new)[0]
     return {"class": iris.target_names[y_pred]}
+
 
 if __name__ == "__main__":
     uvicorn.run(app, port=8080, host="0.0.0.0")
